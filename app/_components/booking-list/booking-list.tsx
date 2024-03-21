@@ -8,9 +8,15 @@ export default function BookingList() {
 
   return (
     <div className="grid gap-4">
-      {bookings.map((booking) => (
-        <BookingCard key={booking.id} booking={booking} />
-      ))}
+      {bookings.length > 0 ? (
+        bookings.map((booking) => (
+          <BookingCard key={booking.id} booking={booking} />
+        ))
+      ) : (
+        <p className="mt-6 text-center text-slate-700">
+          No bookings were found
+        </p>
+      )}
     </div>
   );
 }
