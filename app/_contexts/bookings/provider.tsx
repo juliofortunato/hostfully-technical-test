@@ -15,8 +15,13 @@ export default function BookingsContextClientProvider({
     setBookings([...bookings, booking]);
   }
 
+  function deleteBooking(bookingId: string) {
+    const newBookings = bookings.filter((booking) => booking.id !== bookingId);
+    setBookings(newBookings);
+  }
+
   return (
-    <BookingsContext.Provider value={{ bookings, addBooking }}>
+    <BookingsContext.Provider value={{ bookings, addBooking, deleteBooking }}>
       {children}
     </BookingsContext.Provider>
   );
