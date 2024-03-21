@@ -2,6 +2,7 @@ import { cn } from "@/_lib/utils";
 import { HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import BookingsContextClientProvider from "./_contexts/bookings/provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,16 +28,18 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <header className="border-b">
-          <div className="w-full max-w-6xl mx-auto flex items-center justify-between gap-4 px-4 h-[64px]">
-            <div className="flex items-center gap-2">
-              <HomeIcon className="h-6 w-6" />
-              <h1 className="text-xl font-semibold">Booking Manager</h1>
+        <BookingsContextClientProvider>
+          <header className="border-b">
+            <div className="w-full max-w-6xl mx-auto flex items-center justify-between gap-4 px-4 h-[64px]">
+              <div className="flex items-center gap-2">
+                <HomeIcon className="h-6 w-6" />
+                <h1 className="text-xl font-semibold">Booking Manager</h1>
+              </div>
             </div>
-          </div>
-        </header>
-        <main className="w-full max-w-6xl mx-auto">{children}</main>
-        <footer>© {new Date().getFullYear()} - All rights reserved</footer>
+          </header>
+          <main className="w-full max-w-6xl mx-auto">{children}</main>
+          <footer>© {new Date().getFullYear()} - All rights reserved</footer>
+        </BookingsContextClientProvider>
       </body>
     </html>
   );

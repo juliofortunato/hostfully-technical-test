@@ -1,13 +1,8 @@
 import { Button } from "@/_components/ui/button";
 import { Card, CardContent } from "@/_components/ui/card";
 import { Separator } from "@/_components/ui/separator";
-
-interface Booking {
-  id: string;
-  property: string;
-  startDate: string;
-  endDate: string;
-}
+import { Booking } from "@/_types/booking";
+import { format } from "date-fns";
 
 interface BookingProps {
   booking: Booking;
@@ -16,6 +11,10 @@ interface BookingProps {
 export default function BookingCard({
   booking: { id, property, startDate, endDate },
 }: BookingProps) {
+  const dateFormatStr = "MMMM dd, yyyy";
+  const formattedStartDate = format(startDate, dateFormatStr);
+  const formattedEndDate = format(endDate, dateFormatStr);
+
   return (
     <Card key={id} className="w-full">
       <CardContent className="flex items-center gap-4 justify-between">
@@ -33,7 +32,7 @@ export default function BookingCard({
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Start date:
           </p>
-          <p className="font-semibold">{startDate}</p>
+          <p className="font-semibold">{formattedStartDate}</p>
         </div>
         <Separator
           className="h-[100%] border-gray-200 dark:border-gray-800"
@@ -41,7 +40,7 @@ export default function BookingCard({
         />
         <div className="grid gap-1 text-right">
           <p className="text-sm text-gray-500 dark:text-gray-400">End date:</p>
-          <p className="font-semibold">{endDate}</p>
+          <p className="font-semibold">{formattedEndDate}</p>
         </div>
         <Separator
           className="h-[100%] border-gray-200 dark:border-gray-800"
