@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/_components/ui/button";
+import { Card, CardContent } from "@/_components/ui/card";
+import { Separator } from "@/_components/ui/separator";
 
 interface Booking {
   id: string;

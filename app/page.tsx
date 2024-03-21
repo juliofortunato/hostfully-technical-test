@@ -1,4 +1,4 @@
-import BookingList from "@/components/booking-list";
+import BookingList from "@/_components/booking-list";
 
 export default function Home() {
   return (

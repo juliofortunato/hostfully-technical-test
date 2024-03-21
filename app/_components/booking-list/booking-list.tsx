@@ -1,4 +1,4 @@
-import BookingCard from "../booking-card";
+import BookingCard from "@/_components/booking-card";
 
 const BOOKINGS_MOCK = [
   {

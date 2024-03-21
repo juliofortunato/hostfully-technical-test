@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/_lib/utils";
 import { HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
