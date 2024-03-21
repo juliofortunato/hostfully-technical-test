@@ -1,3 +1,4 @@
+import { PROPERTIES } from "@/_api";
 import { Button } from "@/_components/ui/button";
 import { Calendar } from "@/_components/ui/calendar";
 import {
@@ -9,12 +10,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/_components/ui/form";
-import { Input } from "@/_components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/_components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/_components/ui/select";
 import { cn } from "@/_lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -28,7 +35,7 @@ interface BookingFormProps {
 }
 
 export const formSchema = z.object({
-  property: z.string({ required_error: "Plase select a property" }),
+  property: z.string({ required_error: "Plase select a property to book" }),
   startDate: z.date({ required_error: "Please select the start date" }),
   endDate: z.date({ required_error: "Please select the end date" }),
 });
@@ -44,26 +51,35 @@ export default function BookingForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {/* Property Field */}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-8">
         <FormField
           control={form.control}
           name="property"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Property</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a property to book" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {PROPERTIES.map((property, idx) => (
+                    <SelectItem key={idx} value={property}>
+                      {property}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormDescription>
-                This is your public display name
+                The property that is being booked for.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        {/* Start Date Field */}
         <FormField
           control={form.control}
           name="startDate"
@@ -109,7 +125,6 @@ export default function BookingForm({
           )}
         />
 
-        {/* End Date Field */}
         <FormField
           control={form.control}
           name="endDate"
