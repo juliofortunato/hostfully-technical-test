@@ -12,6 +12,7 @@ import {
 import { useBookings } from "@/_contexts/bookings/useBookings";
 import { Booking } from "@/_types/booking";
 import { useState } from "react";
+import { toast } from "sonner";
 import { z } from "zod";
 import BookingForm, { formSchema } from "../booking-form/booking-form";
 
@@ -27,6 +28,12 @@ export default function AddBooking() {
 
     addBooking?.(newBooking);
     setSheetIsOpen(false);
+    toast.success("Booking created successfully", {
+      cancel: {
+        label: "Dismiss",
+        onClick: () => {},
+      },
+    });
   }
 
   return (

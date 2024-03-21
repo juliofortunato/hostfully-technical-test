@@ -3,6 +3,7 @@ import { HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AddBooking from "./_components/add-booking/add-bookint";
+import { Toaster } from "./_components/ui/sonner";
 import BookingsContextClientProvider from "./_contexts/bookings/provider";
 import "./globals.css";
 
@@ -40,7 +41,7 @@ export default function RootLayout({
             </div>
           </header>
           <main className="w-full max-w-6xl mx-auto">{children}</main>
-          <footer>© {new Date().getFullYear()} - All rights reserved</footer>
+          <Toaster />
         </BookingsContextClientProvider>
       </body>
     </html>
