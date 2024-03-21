@@ -1,11 +1,5 @@
-import { cn } from "@/_lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "../ui/button";
-import { Calendar } from "../ui/calendar";
+import { Button } from "@/_components/ui/button";
+import { Calendar } from "@/_components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -14,9 +8,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/_components/ui/form";
+import { Input } from "@/_components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/_components/ui/popover";
+import { cn } from "@/_lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface BookingFormProps {
   onSubmit: (values: z.infer<typeof formSchema>) => void;

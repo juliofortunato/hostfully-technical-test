@@ -1,5 +1,8 @@
 "use client";
 
+import BookingForm, {
+  formSchema as BookingFormSchema,
+} from "@/_components/booking-form";
 import { Button } from "@/_components/ui/button";
 import {
   Sheet,
@@ -14,9 +17,6 @@ import { Booking } from "@/_types/booking";
 import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import BookingForm, {
-  formSchema as BookingFormSchema,
-} from "../booking-form/booking-form";
 
 export default function AddBooking() {
   const { addBooking } = useBookings();

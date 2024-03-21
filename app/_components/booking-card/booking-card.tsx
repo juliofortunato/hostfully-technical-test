@@ -1,11 +1,4 @@
-import { Button } from "@/_components/ui/button";
-import { Card, CardContent } from "@/_components/ui/card";
-import { Separator } from "@/_components/ui/separator";
-import { useBookings } from "@/_contexts/bookings/useBookings";
-import { Booking } from "@/_types/booking";
-import { format } from "date-fns";
-import { toast } from "sonner";
-import EditBooking from "../edit-booking";
+import EditBooking from "@/_components/edit-booking";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +9,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
+} from "@/_components/ui/alert-dialog";
+import { Button } from "@/_components/ui/button";
+import { Card, CardContent } from "@/_components/ui/card";
+import { Separator } from "@/_components/ui/separator";
+import { useBookings } from "@/_contexts/bookings/useBookings";
+import { Booking } from "@/_types/booking";
+import { format } from "date-fns";
+import { toast } from "sonner";
 
 interface BookingProps {
   booking: Booking;
