@@ -7,4 +7,5 @@ export const BookingsContext = createContext<BookingsContextData>({
   bookings: [],
   addBooking: null,
   deleteBooking: null,
+  updateBooking: null,
 });

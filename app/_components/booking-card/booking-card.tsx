@@ -4,6 +4,8 @@ import { Separator } from "@/_components/ui/separator";
 import { useBookings } from "@/_contexts/bookings/useBookings";
 import { Booking } from "@/_types/booking";
 import { format } from "date-fns";
+import { toast } from "sonner";
+import EditBooking from "../edit-booking";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,9 +22,8 @@ interface BookingProps {
   booking: Booking;
 }
 
-export default function BookingCard({
-  booking: { id, property, startDate, endDate },
-}: BookingProps) {
+export default function BookingCard({ booking }: BookingProps) {
+  const { id, property, startDate, endDate } = booking;
   const { deleteBooking } = useBookings();
   const dateFormatStr = "MMMM dd, yyyy";
   const formattedStartDate = format(startDate, dateFormatStr);
@@ -30,6 +31,12 @@ export default function BookingCard({
 
   function handleDelete() {
     deleteBooking?.(id);
+    toast("The booking has been deleted", {
+      cancel: {
+        label: "Dismiss",
+        onClick: () => {},
+      },
+    });
   }
 
   return (
@@ -64,9 +71,7 @@ export default function BookingCard({
           orientation="vertical"
         />
         <div className="flex items-center gap-2">
-          <Button className="h-8" size="sm" variant="outline">
-            Edit
-          </Button>
+          <EditBooking booking={booking} />
           <AlertDialog>
             <AlertDialogTrigger>
               <Button className="h-8" size="sm" variant="destructive">

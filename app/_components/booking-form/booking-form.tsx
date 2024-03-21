@@ -20,6 +20,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface BookingFormProps {
   onSubmit: (values: z.infer<typeof formSchema>) => void;
+  initialValues?: z.infer<typeof formSchema>;
 }
 
 export const formSchema = z.object({
@@ -28,12 +29,13 @@ export const formSchema = z.object({
   endDate: z.date({ required_error: "Please select the end date" }),
 });
 
-export default function BookingForm({ onSubmit }: BookingFormProps) {
+export default function BookingForm({
+  onSubmit,
+  initialValues,
+}: BookingFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      property: "",
-    },
+    defaultValues: initialValues,
   });
 
   return (

@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/_components/ui/button";
 import {
   Sheet,
@@ -18,19 +16,18 @@ import BookingForm, {
   formSchema as BookingFormSchema,
 } from "../booking-form/booking-form";
 
-export default function AddBooking() {
-  const { addBooking } = useBookings();
+interface EditBookingProps {
+  booking: Booking;
+}
+
+export default function EditBooking({ booking }: EditBookingProps) {
+  const { updateBooking } = useBookings();
   const [sheetIsOpen, setSheetIsOpen] = useState<boolean>(false);
 
   function onSubmit(formValues: z.infer<typeof BookingFormSchema>) {
-    const newBooking: Booking = {
-      id: crypto.randomUUID(),
-      ...formValues,
-    };
-
-    addBooking?.(newBooking);
+    updateBooking?.(booking.id, formValues);
     setSheetIsOpen(false);
-    toast.success("Booking created successfully", {
+    toast.success("Booking update successfully", {
       cancel: {
         label: "Dismiss",
         onClick: () => {},
@@ -41,16 +38,16 @@ export default function AddBooking() {
   return (
     <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
       <SheetTrigger asChild>
-        <Button>New booking</Button>
+        <Button className="h-8" size="sm" variant="outline">
+          Edit
+        </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Add a booking</SheetTitle>
-          <SheetDescription>
-            Create a new booking to a property
-          </SheetDescription>
+          <SheetTitle>Edit booking</SheetTitle>
+          <SheetDescription>Update an existing booking</SheetDescription>
         </SheetHeader>
-        <BookingForm onSubmit={onSubmit} />
+        <BookingForm onSubmit={onSubmit} initialValues={booking} />
       </SheetContent>
     </Sheet>
   );
