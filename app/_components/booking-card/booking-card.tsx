@@ -73,7 +73,7 @@ export default function BookingCard({ booking }: BookingProps) {
         <div className="flex items-center gap-2">
           <EditBooking booking={booking} />
           <AlertDialog>
-            <AlertDialogTrigger>
+            <AlertDialogTrigger asChild>
               <Button className="h-8" size="sm" variant="destructive">
                 Delete
               </Button>
