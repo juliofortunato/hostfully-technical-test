@@ -2,6 +2,7 @@ import { cn } from "@/_lib/utils";
 import { HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import AddBooking from "./_components/add-booking/add-bookint";
 import BookingsContextClientProvider from "./_contexts/bookings/provider";
 import "./globals.css";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
                 <HomeIcon className="h-6 w-6" />
                 <h1 className="text-xl font-semibold">Booking Manager</h1>
               </div>
+              <AddBooking />
             </div>
           </header>
           <main className="w-full max-w-6xl mx-auto">{children}</main>
