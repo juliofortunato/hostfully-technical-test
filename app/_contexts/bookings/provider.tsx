@@ -11,8 +11,12 @@ export default function BookingsContextClientProvider({
 }: BookingsContextClientProviderProps) {
   const [bookings, setBookings] = useState<Booking[]>(BOOKINGS);
 
+  function addBooking(booking: Booking) {
+    setBookings([...bookings, booking]);
+  }
+
   return (
-    <BookingsContext.Provider value={{ bookings }}>
+    <BookingsContext.Provider value={{ bookings, addBooking }}>
       {children}
     </BookingsContext.Provider>
   );

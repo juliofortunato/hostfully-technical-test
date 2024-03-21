@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 
 export interface BookingsContextData {
   bookings: Booking[];
+  addBooking: ((booking: Booking) => void) | null;
 }
 
 export interface BookingsContextClientProviderProps {

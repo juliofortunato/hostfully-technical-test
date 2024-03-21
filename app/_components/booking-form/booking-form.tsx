@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/_lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -20,23 +18,23 @@ import {
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-const formSchema = z.object({
+interface BookingFormProps {
+  onSubmit: (values: z.infer<typeof formSchema>) => void;
+}
+
+export const formSchema = z.object({
   property: z.string({ required_error: "Plase select a property" }),
   startDate: z.date({ required_error: "Please select the start date" }),
   endDate: z.date({ required_error: "Please select the end date" }),
 });
 
-export default function BookingForm() {
+export default function BookingForm({ onSubmit }: BookingFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       property: "",
     },
   });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
 
   return (
     <Form {...form}>

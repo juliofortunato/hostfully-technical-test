@@ -5,4 +5,5 @@ import { BookingsContextData } from "./interfaces";
 
 export const BookingsContext = createContext<BookingsContextData>({
   bookings: [],
+  addBooking: null,
 });
