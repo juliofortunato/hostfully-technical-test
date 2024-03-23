@@ -1,3 +1,3 @@
-import BookingForm, { formSchema } from "./booking-form";
+import BookingForm, { BookingFormSchema } from "./booking-form";
 export default BookingForm;
-export { formSchema };
+export type { BookingFormSchema };

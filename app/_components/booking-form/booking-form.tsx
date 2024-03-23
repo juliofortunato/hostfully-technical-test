@@ -24,33 +24,40 @@ import {
 } from "@/_components/ui/select";
 import { cn } from "@/_lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
+import { format, isBefore } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-interface BookingFormProps {
-  onSubmit: (values: z.infer<typeof formSchema>) => void;
-  initialValues?: z.infer<typeof formSchema>;
-}
+export const bookingFormSchema = z
+  .object({
+    property: z.string({ required_error: "Plase select a property to book" }),
+    startDate: z.date({ required_error: "Please select the start date" }),
+    endDate: z.date({ required_error: "Please select the end date" }),
+  })
+  .refine((schema) => isBefore(schema.startDate, schema.endDate), {
+    message: "The end date must be after the start date",
+    path: ["endDate"],
+  });
 
-export const formSchema = z.object({
-  property: z.string({ required_error: "Plase select a property to book" }),
-  startDate: z.date({ required_error: "Please select the start date" }),
-  endDate: z.date({ required_error: "Please select the end date" }),
-});
+export type BookingFormSchema = z.infer<typeof bookingFormSchema>;
+
+interface BookingFormProps {
+  onSubmit: (values: BookingFormSchema) => void;
+  initialValues?: BookingFormSchema;
+}
 
 export default function BookingForm({
   onSubmit,
   initialValues,
 }: BookingFormProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<BookingFormSchema>({
+    resolver: zodResolver(bookingFormSchema),
     defaultValues: initialValues,
   });
   const {
     watch,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = form;
 
   const watchProperty = watch("property");
@@ -181,7 +188,7 @@ export default function BookingForm({
           />
         )}
 
-        <Button type="submit" disabled={!isValid}>
+        <Button type="submit" data-disabled={!isValid}>
           Submit
         </Button>
       </form>

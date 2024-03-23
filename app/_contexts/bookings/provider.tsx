@@ -1,10 +1,9 @@
 "use client";
 
 import { BOOKINGS } from "@/_api";
-import { formSchema as BookingFormSchema } from "@/_components/booking-form/booking-form";
+import { BookingFormSchema } from "@/_components/booking-form/booking-form";
 import { Booking } from "@/_types/booking";
 import { useState } from "react";
-import { z } from "zod";
 import { BookingsContext } from "./context";
 import { BookingsContextClientProviderProps } from "./interfaces";
 
@@ -22,10 +21,7 @@ export default function BookingsContextClientProvider({
     setBookings(newBookings);
   }
 
-  function updateBooking(
-    bookingId: string,
-    formValues: z.infer<typeof BookingFormSchema>
-  ) {
+  function updateBooking(bookingId: string, formValues: BookingFormSchema) {
     setBookings(
       bookings.map((booking) => {
         if (booking.id === bookingId) {
