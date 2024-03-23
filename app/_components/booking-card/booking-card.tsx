@@ -82,8 +82,10 @@ export default function BookingCard({ booking }: BookingProps) {
               <AlertDialogHeader>
                 <AlertDialogTitle>Delete booking</AlertDialogTitle>
                 <AlertDialogDescription>
-                  <p>Are you sure you want to delete this booking?</p>
-                  <p> This action can not be reverted.</p>
+                  <span>Are you sure you want to delete this booking?</span>
+                  <span className="block">
+                    Please note that this action can not be reverted.
+                  </span>
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
