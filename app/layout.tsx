@@ -2,7 +2,7 @@ import { cn } from "@/_lib/utils";
 import { HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import AddBooking from "./_components/add-booking/add-bookint";
+import AddBooking from "./_components/add-booking/add-booking";
 import { Toaster } from "./_components/ui/sonner";
 import BookingsContextClientProvider from "./_contexts/bookings/provider";
 import "./globals.css";
