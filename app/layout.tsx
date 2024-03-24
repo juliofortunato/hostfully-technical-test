@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AddBooking from "./_components/add-booking/add-booking";
 import { Toaster } from "./_components/ui/sonner";
-import BookingsContextClientProvider from "./_contexts/bookings/provider";
+import BookingsContextProvider from "./_contexts/bookings/provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -30,7 +30,7 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <BookingsContextClientProvider>
+        <BookingsContextProvider>
           <header className="border-b">
             <div className="w-full max-w-6xl mx-auto flex items-center justify-between gap-4 px-4 h-[64px]">
               <div className="flex items-center gap-2">
@@ -42,7 +42,7 @@ export default function RootLayout({
           </header>
           <main className="w-full max-w-6xl mx-auto">{children}</main>
           <Toaster />
-        </BookingsContextClientProvider>
+        </BookingsContextProvider>
       </body>
     </html>
   );

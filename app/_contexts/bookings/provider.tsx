@@ -5,11 +5,11 @@ import { BookingFormSchema } from "@/_components/booking-form/booking-form";
 import { Booking } from "@/_types/booking";
 import { useState } from "react";
 import { BookingsContext } from "./context";
-import { BookingsContextClientProviderProps } from "./interfaces";
+import { BookingsContextProviderProps } from "./interfaces";
 
-export default function BookingsContextClientProvider({
+export default function BookingsContextProvider({
   children,
-}: BookingsContextClientProviderProps) {
+}: BookingsContextProviderProps) {
   const [bookings, setBookings] = useState<Booking[]>(BOOKINGS);
 
   function addBooking(booking: Booking) {

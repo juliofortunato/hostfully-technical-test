@@ -11,6 +11,6 @@ export interface BookingsContextData {
     | null;
 }
 
-export interface BookingsContextClientProviderProps {
+export interface BookingsContextProviderProps {
   children: ReactNode;
 }
