@@ -2,18 +2,18 @@ import { Booking } from "@/_types/booking";
 import { isAfter, isWithinInterval } from "date-fns";
 
 export function validateBooking(
-  property: string,
-  startDate: Date,
-  endDate: Date,
-  bookings: Booking[]
+  booking: Pick<Booking, "property" | "startDate" | "endDate">,
+  allBookings: Booking[]
 ) {
+  const { property, startDate, endDate } = booking;
+
   // Check if start date if before end date
   if (isAfter(startDate, endDate)) {
-    return "End date must be after start date.";
+    return false;
   }
 
   // Check for overlapping bookings for the selected property
-  const overlapping = bookings.some(
+  const overlapping = allBookings.some(
     (booking) =>
       booking.property === property &&
       (isWithinInterval(startDate, {
@@ -32,7 +32,7 @@ export function validateBooking(
   );
 
   if (overlapping) {
-    return "The selected dates overlap with an existing booking for this property.";
+    return false;
   }
 
   // If everything is valid, return true
