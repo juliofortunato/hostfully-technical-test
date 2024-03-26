@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏠 Bookings Manager
 
-## Getting Started
+![](https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
-First, run the development server:
+_This is a simple bookings manager built using Next.JS, TailwindCSS and shadcn/ui to be used as Hostfully's technical test. It works as a simulation so the user can check and manage bookings._
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ℹ Requirements
+
+- NodeJS (used v20.7.0 on development)
+- NPM / Yarn
+
+## ⚙️ Setup
+
+First of all, you'll need to install the project's dependencies by running
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then you can start the application using
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+After that you'll be up and running at http://localhost:3000
 
-## Learn More
+## 🚨 Tests
 
-To learn more about Next.js, take a look at the following resources:
+Test suites can be run using the following commands:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Unit Tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm run test:unit
+```
 
-## Deploy on Vercel
+or
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run test:unit:watch
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### E2E Tests
+
+```
+npm run test:e2e
+```
+
+## 🚀 Build
+
+A production build can be generated with
+
+```
+npm run build
+```
