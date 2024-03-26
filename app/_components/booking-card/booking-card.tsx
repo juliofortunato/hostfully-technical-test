@@ -42,12 +42,11 @@ export default function BookingCard({ booking }: BookingProps) {
     <Card key={id} className="w-full">
       <CardContent className="grid grid-cols-2 grid-rows-3 lg:grid-cols-4 lg:grid-rows-1 gap-4 ">
         <div className="col-span-2 lg:col-span-1 grid gap-1 lg:min-w-max">
-          <h2 className="font-bold">{property}</h2>
+          <h3 className="font-bold">{property}</h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             ID: <span className="font-semibold">{id}</span>
           </p>
         </div>
-        {/* <div className="flex items-center justify-between"> */}
         <div className="row-start-2 lg:row-start-1 lg:col-start-2 grid gap-1 lg:text-right">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Start date:
@@ -58,7 +57,6 @@ export default function BookingCard({ booking }: BookingProps) {
           <p className="text-sm text-gray-500 dark:text-gray-400">End date:</p>
           <p className="font-semibold">{formattedEndDate}</p>
         </div>
-        {/* </div> */}
         <div className="col-span-2 lg:col-span-1 flex items-center gap-2 justify-end">
           <EditBooking booking={booking} />
           <AlertDialog>
